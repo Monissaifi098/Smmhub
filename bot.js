@@ -4,8 +4,8 @@ const QRCode = require('qrcode');
 
 // ===================== CONFIG =====================
 const BOT_TOKEN = process.env.BOT_TOKEN || '8781119793:AAESRUPn6-d4XAfMevf8ETdBS2ordbyc6eQ';
-const WEBHOOK_URL = process.env.WEBHOOK_URL || 'https://smmhub-production.up.railway.app';
-const MINI_APP_URL = process.env.MINI_APP_URL || 'https://smmhu.netlify.app';
+const WEBHOOK_URL = process.env.WEBHOOK_URL || ''; // e.g. https://your-app.up.railway.app  (set this AFTER first deploy)
+const MINI_APP_URL = process.env.MINI_APP_URL || 'YOUR_NETLIFY_URL_HERE'; // <-- PASTE YOUR index.html NETLIFY LINK HERE
 const FIREBASE_DB_URL = process.env.FIREBASE_DB_URL || 'https://smmhub-1e20c-default-rtdb.firebaseio.com';
 const PORT = process.env.PORT || 3000;
 
@@ -51,7 +51,7 @@ function mainKeyboard() {
     return {
         reply_markup: {
             keyboard: [
-                [{ text: '🛍️ Social Media Service', web_app: { url: MINI_APP_URL } }],
+                [{ text: '🛍️ Social Media Service' }],
                 [{ text: '💰 Add Fund' }, { text: '🤝 Refer and Earn' }],
                 [{ text: '💸 Earn Money' }, { text: '🎁 Daily Reward' }]
             ],
@@ -139,6 +139,18 @@ bot.on('message', async (msg) => {
             });
             bot.sendMessage(chatId, '✅ Payment proof submitted! Admin will verify and credit your wallet shortly.', mainKeyboard());
             delete userState[chatId];
+            return;
+        }
+
+        // ---- Menu: Social Media Service ----
+        if (text === '🛍️ Social Media Service') {
+            bot.sendMessage(chatId, '🛍️ Open our SMM Panel:', {
+                reply_markup: {
+                    inline_keyboard: [[
+                        { text: '🚀 Open Social Media Service', web_app: { url: MINI_APP_URL } }
+                    ]]
+                }
+            });
             return;
         }
 
