@@ -5,7 +5,7 @@ const QRCode = require('qrcode');
 // ===================== CONFIG =====================
 const BOT_TOKEN = process.env.BOT_TOKEN || '8781119793:AAESRUPn6-d4XAfMevf8ETdBS2ordbyc6eQ';
 const WEBHOOK_URL = process.env.WEBHOOK_URL || ''; // e.g. https://your-app.up.railway.app  (set this AFTER first deploy)
-const MINI_APP_URL = process.env.MINI_APP_URL || 'YOUR_NETLIFY_URL_HERE'; // <-- PASTE YOUR index.html NETLIFY LINK HERE
+const MINI_APP_URL = process.env.MINI_APP_URL || 'https://smmhu.netlify.app/'; // <-- PASTE YOUR index.html NETLIFY LINK HERE
 const FIREBASE_DB_URL = process.env.FIREBASE_DB_URL || 'https://smmhub-1e20c-default-rtdb.firebaseio.com';
 const PORT = process.env.PORT || 3000;
 
